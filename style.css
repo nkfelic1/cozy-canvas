@@ -5,3 +5,7 @@
     padding: 60px 32px;
     color: #3e2e2e;
 }
+
+.hero h1 {
+    font-family: 'Lora', serif;
+}
