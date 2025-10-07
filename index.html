@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang=""en">
+<head>
+    <meta charset=""UTF-8" />
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cozy Canvas</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
 
+<body>
+    <!-- Template for the pins -->
+    <template id="pin-template">
+        <div class="pin-item">
+            <img class="pin-image" data-src="" alt="Cozy pin image">
+
+            <div class=""pin-overlay">
+                <div class="data-viz progress-fill"></div>
+
+                <button class="save-button" aria-label="Save this pin"></button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Grid container -->
+    <section class="masonry-grid" id="masonry-container"></section>
+
+    <secript src="script.js" defer></secript>
+</body>
+
+</html>
