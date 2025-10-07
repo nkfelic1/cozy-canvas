@@ -9,7 +9,6 @@
       "settings": {
         "livePreview.autoRefreshPreview": "On All Changes in Editor",
         "editor.minimap.enabled": false,
-        "workbench.colorTheme": "Visual Studio Dark",
         "editor.tabSize": 2,
         "editor.insertSpaces": true,
         "editor.detectIndentation": false,
