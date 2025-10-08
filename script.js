@@ -33,15 +33,39 @@ const NUM_COLUMNS = 4;
 // Get the masonry grid container
 const masonryContainer = document.getElementById('masonry-container');
 
+// Responsive column count based on window width
+function getResponsiveColumnCount() {
+    if (window.innerWidth < 600) return 1;
+    if (window.innerWidth < 900) return 2;
+    if (window.innerWidth < 1200) return 3;
+    return 4;
+}
+
 // Array to store references to the columns
-const gridColumns = [];
+let gridColumns = [];
+
+// Remove all child nodes from a parent
+function clearElement(el) {
+    while (el.firstChild) el.removeChild(el.firstChild);
+}
 
 // Dynamically create and append columns
-for (let i = 0; i < NUM_COLUMNS; i++) {
-    const col = document.createElement('div');
-    col.className = 'grid-column';
-    masonryContainer.appendChild(col);
-    gridColumns.push(col);
+function setupColumnsAndReflowPins() {
+    const colCount = getResponsiveColumnCount();
+    clearElement(masonryContainer);
+    gridColumns = [];
+    for (let i = 0; i < colCount; i++) {
+        const col = document.createElement('div');
+        col.className = 'grid-column';
+        masonryContainer.appendChild(col);
+        gridColumns.push(col);
+    }
+    // Reflow already loaded pins
+    document.querySelectorAll('.pin').forEach(pin => {
+        // Remove pin from old column and append to shortest new column
+        const shortestCol = findShortestColumn();
+        shortestCol.appendChild(pin);
+    });
 }
 
 /**
@@ -126,7 +150,13 @@ function canLoadMorePins() {
 
 // Call loadMorePins for the initial batch after DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
+    setupColumnsAndReflowPins();
     loadMorePins();
+});
+
+// Recalculate columns and reflow pins on resize
+window.addEventListener('resize', () => {
+    setupColumnsAndReflowPins();
 });
 
 // Listen for scroll events to load more pins near the bottom

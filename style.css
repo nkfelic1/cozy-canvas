@@ -36,10 +36,27 @@ body {
     align-items: flex-start;
 }
 .grid-column {
-    flex: 1;
+    flex: 1 1 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    min-width: 0;
+}
+
+/* Responsive column spacing */
+@media (max-width: 1199px) {
+    .grid-column { }
+}
+@media (max-width: 899px) {
+    .grid-column { }
+}
+@media (max-width: 599px) {
+    #masonry-container {
+        gap: 0;
+    }
+    .grid-column {
+        gap: 0;
+    }
 }
 .pin {
     background: #ebebeb;
