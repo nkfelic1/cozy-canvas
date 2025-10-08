@@ -83,3 +83,43 @@ button {
     display: block;
     border-radius: 4px;
 }
+
+/* Pomodoro Styling */
+.pomodoro-timer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+
+    background-color: #ebebeb;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .timer-circle {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #708d97;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.timer-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #3e3e3e;
+
+    width:60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fbfbfb;
+    text-align: center;
+    line-height: 60px;
+}
