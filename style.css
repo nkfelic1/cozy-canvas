@@ -1,6 +1,14 @@
+body {
+    background-color: #fbfbfb;
+    font-family: 'Inter';
+    color: #3e2e2e;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
 /* Hero Section */
 .hero {
-    background: #fbfbfb;
+    background: #708d97;
     text-align: center;
     padding: 60px 32px;
     color: #3e2e2e;
