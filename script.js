@@ -175,3 +175,52 @@ window.addEventListener('scroll', () => {
         loadMorePins();
     }
 });
+
+// pomodoro state management
+let pomodoroState = {
+    duration: 25 * 60, // default 25 minutes
+    remaining: 25 * 60,
+    isRunning: false,
+    timerId: null
+};
+
+// Function to start the pomodoro timer
+function startPomodoro(state) {
+    if (state.isRunning) return; // already running
+    state.isRunning = true;
+    state.timerId = setInterval(() => {
+        state.remaining--;
+
+        if (state.remaining <= 0) {
+            clearInterval(state.timerId);
+            state.isRunning = false;
+            state.remaining = state.duration;
+            alert('Pomodoro session ended!');
+        }
+        updateTimerDisplay(state);
+        updatePomodoroDisplay(state);
+    }, 1000);   
+}
+
+function updateTimerDisplay(state) {
+    const minutes = Math.floor(state.remaining / 60);
+    const seconds = state.remaining % 60;
+    const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+    state.element.querySelector('.timer-text').textContent = timeString;
+}
+
+function updatePomodoroDisplay(state) {
+    const percentage = 100 - (state.remaining / state.duration) * 100;
+
+    const fillAngle = percentage * 3.6; // convert percentage to degrees
+
+    const newGradient = `conic-gradient(
+        #A85A48 0deg,
+        #A85A48 ${fillAngle}deg,
+        #EbEbEb ${fillAngle}deg,
+        #EbEbEb 360deg
+    )`;
+
+    state.element.querySelector('.pomodoro-timer').style.background = newGradient;
+}
